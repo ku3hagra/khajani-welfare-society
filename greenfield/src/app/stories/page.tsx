@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { InstitutionalPage } from "@/components/pages/InstitutionalPage";
+export const metadata: Metadata = { title: "Stories & Media", description: "Real human stories, awards and recognition, institutional moments, press and on-ground milestones." };
+export default function Page(){return <InstitutionalPage eyebrow="Stories & Media" title="People, milestones and recognition documented with care." intro="This area will bring together real human stories, awards and recognition, institutional moments, press and on-ground milestones." note="No manufactured testimonials and no generic gallery dump."/>}
