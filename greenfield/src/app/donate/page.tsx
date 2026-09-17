@@ -1,0 +1,7 @@
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = { title: "Donate", description: "Support Khajani Welfare Society's work across skills, livelihoods, heritage and community development in Mathura and Braj." };
+
+export default function Page(){return <><Header/><main><section className="pageHero"><div className="shell"><p className="eyebrow">Support Khajani</p><h1>Support work that connects skills with livelihoods.</h1><p className="heroLead">The supplied UPI QR will be added only after recipient details are verified for public display.</p><div className="pageNote"><strong>Launch verification gate:</strong> payment recipient details must be confirmed before the QR becomes public.</div></div></section></main><Footer/></>}
