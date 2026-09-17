@@ -1,0 +1,71 @@
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+
+const domains = [
+  "Women, Skills & Livelihoods",
+  "Artisans, Heritage & Creative Economy",
+  "Education, Digital & Community Development",
+  "Inclusive & Sustainable Development",
+];
+const steps = ["Learn", "Practise", "Produce", "Connect", "Earn", "Grow"];
+
+export function HomePage() {
+  return (
+    <>
+      <Header />
+      <main>
+        <section className="hero">
+          <div className="shell heroGrid">
+            <div>
+              <p className="eyebrow">Mathura · Since 2007</p>
+              <h1>Skills that move <em>forward.</em></h1>
+              <p className="heroLead">Khajani Welfare Society connects practical skills with livelihoods, enterprise, heritage, education and stronger communities—rooted in Mathura and the living culture of Braj.</p>
+              <div className="buttonRow"><a className="button" href="/our-work">Explore our work</a><a className="textLink" href="#beginning">Our journey →</a></div>
+            </div>
+            <div className="placeholder">Verified Khajani hero image · final selection pending</div>
+          </div>
+        </section>
+
+        <section className="proof"><div className="shell proofGrid">
+          <div><p className="eyebrow">Impact, with context</p><p>Numbers are proof, but only when they are explained.</p></div>
+          <div><strong>2007</strong><span>the journey begins in Mathura</span></div>
+          <div><strong>4</strong><span>connected domains of work</span></div>
+          <div><strong>GI</strong><span>Mathura Zari Poshak landmark</span></div>
+        </div></section>
+
+        <section className="section" id="beginning"><div className="shell split">
+          <div className="placeholder">Early Khajani archival photograph · verified caption before publication</div>
+          <div><p className="eyebrow">How it began</p><h2>A practical beginning, built patiently over time.</h2><p>Khajani began in Mathura in 2007 from a shared vision involving Dr. Harimohan Maheshwari, Abha Maheshwari and Shipra Rathi.</p><p>Karshni Guru Sharnanand Ji Maharaj personally performed the inaugural puja. This remains institutional history, not personality-led branding.</p><a className="textLink" href="/about">Read our story →</a></div>
+        </div></section>
+
+        <section className="section"><div className="shell">
+          <div className="sectionHead"><div><p className="eyebrow">What we do</p><h2>Four domains. One connected journey.</h2></div><p>Khajani is not framed as a certificate-delivery institution. The work is organised around what people can build next.</p></div>
+          <div className="domainList">{domains.map((d,i)=><a className="domainRow" href="/our-work" key={d}><span>{String(i+1).padStart(2,"0")}</span><h3>{d}</h3><p>Skills, livelihoods, heritage, education and community outcomes are designed to connect rather than sit in separate boxes.</p><span>↗</span></a>)}</div>
+        </div></section>
+
+        <section className="section journey"><div className="shell">
+          <p className="eyebrow">How work moves forward</p><h2>Training is the start, not the finish line.</h2>
+          <div className="steps">{steps.map((s,i)=><div className="step" key={s}><span>{String(i+1).padStart(2,"0")}</span><strong>{s}</strong></div>)}</div>
+        </div></section>
+
+        <section className="section heritage"><div className="shell split">
+          <div><p className="eyebrow">Braj heritage & artisan economy</p><h2>Living traditions need living livelihoods.</h2><p>Sanjhi, Mathura Zari Poshak and other Braj skills are approached as living knowledge, identity and economic opportunity.</p><p><strong>Mathura Zari Poshak GI registration is complete.</strong> Khajani Welfare Society is the registered proprietor.</p><a className="textLink" href="/heritage">Explore heritage →</a></div>
+          <div className="placeholder">Verified Sanjhi / Zari / artisan process imagery</div>
+        </div></section>
+
+        <section className="section"><div className="shell projectGrid">
+          <div className="placeholder">Selected verified project image</div><div><p className="eyebrow">Selected work</p><h2>A few programmes, shown with depth.</h2><p>Featured projects will come from the controlled CMS with status, geography, verified outcomes and real photographs.</p><a className="textLink" href="/projects">View projects →</a></div>
+        </div></section>
+
+        <section className="section storyBand"><div className="shell storyGrid"><div className="placeholder">Real participant / artisan portrait</div><div><p className="eyebrow">One human story</p><h2>One genuine story, with context and dignity.</h2><p>No manufactured testimonials and no carousel of generic quotes.</p></div></div></section>
+
+        <section className="section"><div className="shell"><p className="eyebrow">19 years, seen in moments</p><h2>History shown through evidence, not a crowded chronology.</h2><div className="momentRail"><article><span>2007</span><p>Khajani begins in Mathura</p></article><article><span>Early years</span><p>Skills become a larger pathway</p></article><article><span>Heritage</span><p>Braj artisan economy</p></article><article><span>2025</span><p>Mathura Zari Poshak GI milestone</p></article></div></div></section>
+
+        <section className="section"><div className="shell collabGrid"><div><p className="eyebrow">Collaborations</p><h2>Institutions matter when work is built together.</h2></div><div className="partnerPlaceholders"><span>Partner</span><span>Partner</span><span>Partner</span><span>Partner</span></div></div></section>
+        <section className="section"><div className="shell involveGrid"><div><p className="eyebrow">Get involved</p><h2>Support work that moves beyond training.</h2></div><div><p><a className="textLink" href="/get-involved">Partner with Khajani →</a></p><p><a className="textLink" href="/donate">Support livelihoods →</a></p></div></div></section>
+        <section className="section visualClose"><div className="shell"><p className="eyebrow">Mathura · Braj</p><h2>Grounded in place. Built for lasting livelihoods.</h2></div></section>
+      </main>
+      <Footer />
+    </>
+  );
+}
