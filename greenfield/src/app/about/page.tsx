@@ -1,4 +1,0 @@
-import type { Metadata } from "next";
-import { InstitutionalPage } from "@/components/pages/InstitutionalPage";
-export const metadata: Metadata = { title: "About Khajani", description: "Khajani's story connects its collective beginning with the practical work, partnerships and institutional capability built over time." };
-export default function Page(){return <InstitutionalPage eyebrow="About Khajani" title="A grassroots institution built in Mathura since 2007." intro="Khajani's story connects its collective beginning with the practical work, partnerships and institutional capability built over time." note="Final public copy and verified imagery will be populated through the controlled content workflow."/>}

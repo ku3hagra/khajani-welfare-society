@@ -1,4 +1,0 @@
-import type { Metadata } from "next";
-import { InstitutionalPage } from "@/components/pages/InstitutionalPage";
-export const metadata: Metadata = { title: "Impact", description: "Impact figures will be verified, explained and connected to the work behind them rather than presented as a vanity counter wall." };
-export default function Page(){return <InstitutionalPage eyebrow="Impact" title="Evidence with context and human meaning." intro="Impact figures will be verified, explained and connected to the work behind them rather than presented as a vanity counter wall." note="Verified cumulative figures will be added through the controlled CMS workflow."/>}
