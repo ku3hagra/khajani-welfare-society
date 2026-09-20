@@ -25,7 +25,7 @@ function ImpactCounter({
   target: number;
   suffix?: string;
   label: string;
-  subtext: string;
+  subtext?: string;
   delay?: number;
 }) {
   const { ref, displayed } = useAnimeCounter({
@@ -41,19 +41,21 @@ function ImpactCounter({
           <div className="overflow-hidden mb-1.5">
             <span
               ref={ref as React.RefObject<HTMLSpanElement>}
-              className="text-2xl sm:text-3xl lg:text-[22px] xl:text-[26px] 2xl:text-3xl font-display font-bold text-primary block tabular-nums tracking-tight whitespace-nowrap group-hover:text-accent transition-colors"
+              className="text-2xl sm:text-3xl lg:text-[20px] xl:text-[24px] 2xl:text-3xl font-display font-bold text-primary block tabular-nums tracking-tight whitespace-nowrap group-hover:text-accent transition-colors"
             >
               {displayed}
             </span>
           </div>
           <div className="h-0.5 w-6 bg-secondary/60 rounded-full mb-2 group-hover:w-10 transition-all duration-300" />
-          <h4 className="font-display font-bold text-sm sm:text-sm lg:text-[13px] xl:text-sm text-foreground leading-snug min-h-[2.2rem] flex items-center">
+          <h4 className="font-display font-bold text-sm sm:text-sm lg:text-[12px] xl:text-sm text-foreground leading-snug min-h-[2.8rem] flex items-center">
             {label}
           </h4>
         </div>
-        <p className="text-[11px] text-muted-foreground leading-relaxed mt-2 pt-2 border-t border-border/40">
-          {subtext}
-        </p>
+        {subtext && (
+          <p className="text-[11px] text-muted-foreground leading-relaxed mt-2 pt-2 border-t border-border/40">
+            {subtext}
+          </p>
+        )}
       </div>
     </AnimeReveal>
   );
@@ -103,18 +105,6 @@ const AboutPage = () => {
                 </p>
               </div>
 
-              {/* Subtle Scroll CTA */}
-              <div className="pt-4">
-                <a
-                  href="#our-beginning"
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-accent transition-colors group"
-                >
-                  <span className="p-2.5 rounded-full bg-primary/5 group-hover:bg-accent/10 transition-colors border border-border/80">
-                    <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
-                  </span>
-                  Our Journey ↓
-                </a>
-              </div>
             </AnimeReveal>
 
             {/* 45% Desktop Editorial Photograph Column */}
@@ -144,23 +134,6 @@ const AboutPage = () => {
 
           </div>
 
-          {/* Bottom Transition to Screen 2 */}
-          <div className="mt-16 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <span className="text-xs font-bold tracking-[0.25em] text-accent uppercase block">
-                IT BEGAN WITH PEOPLE
-              </span>
-              <p className="text-xs text-muted-foreground mt-0.5 font-light">
-                Three founders. A grassroots beginning. A journey that started in Mathura.
-              </p>
-            </div>
-            <a
-              href="#our-beginning"
-              className="text-xs font-bold text-secondary hover:text-primary transition-colors flex items-center gap-1 uppercase tracking-wider"
-            >
-              Explore Our Beginning <ChevronRight size={14} />
-            </a>
-          </div>
         </div>
       </header>
 
@@ -187,7 +160,7 @@ const AboutPage = () => {
                   Khajani's story began in Mathura in 2007 with three people who brought different experiences, but shared a belief in the value of practical skills and meaningful opportunities.
                 </p>
                 <p>
-                  <strong className="font-semibold text-foreground">Dr. Harimohan Maheshwari</strong>, a retired veterinary doctor with a long background in public service, <strong className="font-semibold text-foreground">Abha Maheshwari</strong>, and <strong className="font-semibold text-foreground">Shipra Rathi</strong>, a fashion designer with experience in skill training, came together to begin what would gradually grow into Khajani Welfare Society.
+                  <strong className="font-semibold text-foreground">Dr. Hari Mohan Maheshwari</strong>, a retired veterinary doctor with a long background in public service, <strong className="font-semibold text-foreground">Abha Maheshwari</strong>, and <strong className="font-semibold text-foreground">Shipra Rathi</strong>, a fashion designer with experience in skill training, came together to begin what would gradually grow into Khajani Welfare Society.
                 </p>
                 <p>
                   The early work was grassroots and practical—creating opportunities for women to learn useful skills and strengthen their capabilities. There was no large institutional beginning; the organisation grew through its work, its relationships with people and a deeper understanding of the communities around it.
@@ -339,15 +312,6 @@ const AboutPage = () => {
               })}
             </div>
 
-            {/* Bottom Footer Strip matching Mockup */}
-            <div className="mt-8 pt-6 border-t border-[#E8E2D9] flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[#718096]/80 font-medium">
-                MATHURA · BRAJ · KHAJANI
-              </div>
-              <div className="font-handwriting text-xl sm:text-2xl text-[#C4A480] italic">
-                People · Heritage · Opportunity
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -557,38 +521,6 @@ const AboutPage = () => {
          ══════════════════════════════════════════════════════════════════════════════════ */}
       <HorizontalTimeline />
 
-      {/* ─── FULL-WIDTH STRIP: TODAY — THE JOURNEY CONTINUES (Side-to-Side Edge) ─── */}
-      <section className="w-full bg-primary text-primary-foreground relative overflow-hidden py-12 sm:py-16 border-y border-white/10 shadow-lg">
-        <AuroraBackground variant="dark" intensity={1.1} />
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <AnimeReveal variant="fade-up">
-            <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-white/10 text-secondary border border-white/20 inline-block mb-4">
-              TODAY · THE JOURNEY CONTINUES
-            </span>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 tracking-tight">
-              Same roots. A wider purpose.
-            </h3>
-            <p className="text-primary-foreground/85 text-base sm:text-lg max-w-3xl mx-auto font-light leading-relaxed mb-6">
-              Today, Khajani's work brings together women-focused skill development, livelihoods, traditional crafts, education and community development—while continuing to explore new opportunities around the skills and cultural knowledge of Mathura and Braj. What has changed over the years is the scale and range of the work. What remains constant is its connection with people, practical capability and place.
-            </p>
-            <p className="font-handwriting text-2xl sm:text-3xl text-secondary">
-              People · Skills · Heritage · Opportunity
-            </p>
-          </AnimeReveal>
-        </div>
-      </section>
-
-      {/* Bottom Transition to Screen 6 */}
-      <div className="bg-background py-8 border-b border-border/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-accent">
-            The journey explains how Khajani grew.
-          </p>
-          <p className="text-sm text-muted-foreground mt-0.5">
-            The next chapter shows what that growth became.
-          </p>
-        </div>
-      </div>
 
       {/* ══════════════════════════════════════════════════════════════════════════════════
           SCREEN 6 — HOW OUR WORK EVOLVED + OUR IMPACT
@@ -711,40 +643,27 @@ const AboutPage = () => {
                 <AnimeReveal key={stage.category} variant="fade-up" delay={i * 60}>
                   <div className="bg-white rounded-2xl p-4 sm:p-4.5 border border-[#EAE4DC] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between h-full group">
                     <div className="flex items-center justify-between gap-3 h-full">
-                      {/* Left Column: Icon, Text and Link */}
-                      <div className="flex-1 flex flex-col justify-between h-full min-w-0 pr-1">
-                        <div>
-                          {/* Icon Badge */}
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${stage.iconBg} ${stage.iconColor}`}>
-                            <stage.icon className="w-3.5 h-3.5" />
-                          </div>
-
-                          {/* Category Tag */}
-                          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-[#C45A47] block mb-0.5">
-                            {stage.category}
-                          </span>
-
-                          {/* Headline */}
-                          <h4 className="font-display font-bold text-sm sm:text-base text-[#192742] leading-snug mb-1 group-hover:text-[#B3702A] transition-colors">
-                            {stage.headline}
-                          </h4>
-
-                          {/* Description */}
-                          <p className="text-[11px] sm:text-xs text-[#616C7D] leading-relaxed font-light mb-2.5">
-                            {stage.desc}
-                          </p>
+                      {/* Left Column: Icon and Text */}
+                      <div className="flex-1 min-w-0 pr-1">
+                        {/* Icon Badge */}
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${stage.iconBg} ${stage.iconColor}`}>
+                          <stage.icon className="w-3.5 h-3.5" />
                         </div>
 
-                        {/* Learn more Link */}
-                        <div className="pt-0.5">
-                          <Link
-                            to={stage.link}
-                            className="inline-flex items-center gap-1 text-[11px] font-bold text-[#192742] hover:text-[#B3702A] transition-colors group/link"
-                          >
-                            <span>Learn more</span>
-                            <span className="transition-transform group-hover/link:translate-x-1">→</span>
-                          </Link>
-                        </div>
+                        {/* Category Tag */}
+                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-[#C45A47] block mb-0.5">
+                          {stage.category}
+                        </span>
+
+                        {/* Headline */}
+                        <h4 className="font-display font-bold text-sm sm:text-base text-[#192742] leading-snug mb-1 group-hover:text-[#B3702A] transition-colors">
+                          {stage.headline}
+                        </h4>
+
+                        {/* Description */}
+                        <p className="text-[11px] sm:text-xs text-[#616C7D] leading-relaxed font-light">
+                          {stage.desc}
+                        </p>
                       </div>
 
                       {/* Right Column: Organic Pebble-Clipped Image with Pastel Blob */}
@@ -779,15 +698,6 @@ const AboutPage = () => {
               ))}
             </div>
 
-            {/* Bottom Accent Strip */}
-            <div className="pt-5 border-t border-[#EAE4DC] flex flex-col sm:flex-row items-center justify-between gap-3">
-              <p className="font-handwriting text-lg sm:text-xl text-[#B3702A] italic font-normal tracking-wide text-center sm:text-left">
-                Our roots give the work its character. Our people give it purpose.
-              </p>
-              <div className="text-[10px] font-medium tracking-[0.24em] text-[#8C847C] uppercase">
-                PEOPLE · HERITAGE · OPPORTUNITY
-              </div>
-            </div>
           </div>
 
           {/* Lower Half — Our Impact */}
@@ -804,37 +714,49 @@ const AboutPage = () => {
               </p>
             </AnimeReveal>
 
-            {/* 5 Verified Counters Grid - Compact */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-8 sm:mb-10">
+            {/* 6 Verified Counters Grid - Compact */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-8 sm:mb-10">
               <ImpactCounter
-                target={10000}
-                label="Women Trained"
-                subtext="Practical and vocational learning across skills."
+                target={22000}
+                suffix="+"
+                label="Women & Inmates Reached"
+                subtext="Vocational skill training & livelihood empowerment."
                 delay={0}
               />
               <ImpactCounter
-                target={200}
-                label="Training Batches"
-                subtext="Structured learning delivered across core domains."
-                delay={80}
-              />
-              <ImpactCounter
-                target={500}
-                label="Artisans Supported"
-                subtext="Traditional skills strengthened through design support."
-                delay={160}
+                target={55000}
+                suffix="+"
+                label="Families Impacted"
+                subtext="Household stability & sustainable family income."
+                delay={60}
               />
               <ImpactCounter
                 target={1000}
-                label="Learners Reached"
-                subtext="Children engaged through educational initiatives."
+                suffix="+"
+                label="Lives Touched Annually"
+                subtext="Continuous grassroots outreach and community support."
+                delay={120}
+              />
+              <ImpactCounter
+                target={152}
+                suffix=""
+                label="Villages Reached"
+                subtext="Active rural network extending across Mathura & Braj."
+                delay={180}
+              />
+              <ImpactCounter
+                target={250}
+                suffix="+"
+                label="Sanjhi Artists Trained"
+                subtext="Ancestral craft heritage revived through master artisans."
                 delay={240}
               />
               <ImpactCounter
-                target={50}
-                label="Communities Engaged"
-                subtext="Grassroots relationships extending across Braj."
-                delay={320}
+                target={120}
+                suffix="+"
+                label="Women Earning Through Sanjhi Art"
+                subtext="Independent artisans fulfilling temple & commercial orders."
+                delay={300}
               />
             </div>
 
@@ -920,7 +842,7 @@ const AboutPage = () => {
               <span className="text-secondary font-serif italic">One shared purpose.</span>
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base mt-3 font-light leading-relaxed">
-              Khajani's journey is also a story of continuity across generations. What began in Mathura with Dr. Harimohan Maheshwari and Abha Maheshwari, together with their daughter Shipra Rathi, gradually grew into a wider family commitment. Over the years, other members joined the journey, and today a third generation is contributing too.
+              Khajani's journey is also a story of continuity across generations. What began in Mathura with Dr. Hari Mohan Maheshwari and Abha Maheshwari, together with their daughter Shipra Rathi, gradually grew into a wider family commitment. Over the years, other members joined the journey, and today a third generation is contributing too.
             </p>
             <div className="mt-3">
               <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-secondary/15 text-primary border border-secondary/30">
@@ -939,14 +861,14 @@ const AboutPage = () => {
 
             {/* 3-Column Responsive Grid with proper portrait aspect ratios */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-              {/* Dr. Harimohan Maheshwari */}
+              {/* Dr. Hari Mohan Maheshwari */}
               <AnimeReveal variant="fade-up" delay={0} className="w-full">
                 <div className="rounded-3xl p-5 sm:p-6 flex flex-col justify-between border border-border/80 hover:border-secondary/60 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 bg-white shadow-md h-full">
                   <div>
                     <div className="rounded-2xl overflow-hidden aspect-[4/3] w-full bg-[#FAF7F2] mb-4 border border-border/50 shadow-inner group-hover:scale-[1.02] transition-transform duration-500 relative">
                       <img
                         src="/images/about/dr-hari-mohan.jpg"
-                        alt="Dr. Harimohan Maheshwari, Co-Founder"
+                        alt="Dr. Hari Mohan Maheshwari, Co-Founder"
                         className="w-full h-full object-cover object-[center_15%]"
                       />
                     </div>
@@ -954,7 +876,7 @@ const AboutPage = () => {
                       CO-FOUNDER
                     </span>
                     <h4 className="font-serif font-bold text-lg sm:text-xl text-primary leading-tight mb-1">
-                      Dr. Harimohan Maheshwari
+                      Dr. Hari Mohan Maheshwari
                     </h4>
                     <p className="text-xs sm:text-[13px] font-medium text-[#C28236] mb-2 leading-snug">
                       A lifetime of service. A grassroots perspective.
@@ -1055,7 +977,7 @@ const AboutPage = () => {
                       FIRST GENERATION
                     </span>
                     <h4 className="font-display font-bold text-lg text-primary mb-1.5">
-                      Dr. Harimohan Maheshwari &amp; Abha Maheshwari
+                      Dr. Hari Mohan Maheshwari &amp; Abha Maheshwari
                     </h4>
                     <p className="text-xs font-semibold text-accent mb-2">
                       Experience &amp; Foundation

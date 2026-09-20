@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { animate, stagger } from "animejs";
 import { MediaLightbox, MediaItem } from "@/components/MediaLightbox";
+import OurJourneyTimeline from "@/components/OurJourneyTimeline";
 
 /* ─── Individual Counter Stat for Screen 5 Impact ─── */
 function ImpactStatCounter({
@@ -134,7 +135,7 @@ const HomePage = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            
+
             {/* Left Copy */}
             <AnimeReveal variant="fade-left" className="lg:w-1/2 text-center lg:text-left space-y-6">
               {/* Eyebrow */}
@@ -148,7 +149,7 @@ const HomePage = () => {
 
               {/* Supporting Copy */}
               <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed max-w-xl mx-auto lg:mx-0 border-l-4 border-accent pl-5">
-                Khajani Welfare Society is a Mathura-based organisation working with women, girls, artisans and underserved communities to build skills, preserve heritage and create more inclusive, sustainable livelihoods.
+                Khajani Welfare Society is an organisation based in Mathura, Uttar Pradesh, working with women, girls, artisans and underserved communities to build skills, preserve heritage and create better livelihood opportunities.
               </p>
 
               {/* CTAs */}
@@ -203,7 +204,7 @@ const HomePage = () => {
                   </p>
                 </div>
 
-                {/* Floating Stat Badge — 20,000+ Women Helped */}
+                {/* Floating Stat Badge — 22,000+ Women Helped */}
                 <div
                   className="absolute -bottom-4 -left-3 sm:-left-8 glass rounded-2xl p-4 sm:p-5 z-20 flex items-center gap-3.5 sm:gap-4 bg-white/95 border border-border shadow-xl animate-float-bounce cursor-default"
                   style={{
@@ -215,7 +216,7 @@ const HomePage = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl sm:text-3xl font-display font-bold text-primary leading-none">
-                      20,000+
+                      22,000+
                     </h3>
                     <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold mt-1">
                       Women Helped
@@ -225,24 +226,6 @@ const HomePage = () => {
               </div>
             </AnimeReveal>
           </div>
-
-          {/* Crafting Brighter Futures Banner */}
-          <AnimeReveal variant="fade-up" delay={300} className="mt-14 pt-8 border-t border-border/70 text-center">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent block mb-2">
-              Crafting Brighter Futures
-            </span>
-            <p className="text-xs sm:text-sm font-medium text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-              Women &amp; Livelihoods &nbsp;|&nbsp; Heritage &amp; Artisan Development &nbsp;|&nbsp; Education &amp; Digital Inclusion &nbsp;|&nbsp; Community Development &amp; Social Empowerment
-            </p>
-            <div className="mt-4 flex flex-col items-center gap-1">
-              <p className="text-[11px] font-mono tracking-widest text-muted-foreground uppercase">
-                Mathura — Our Home — Our Inspiration
-              </p>
-              <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 mt-1">
-                SCROLL TO EXPLORE ↓
-              </span>
-            </div>
-          </AnimeReveal>
         </div>
       </section>
 
@@ -251,7 +234,7 @@ const HomePage = () => {
          ══════════════════════════════════════════════════════════════════════════════════ */}
       <section id="about-khajani" className="py-24 bg-card border-b border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Part A: About Khajani */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
             <AnimeReveal variant="fade-left" className="lg:col-span-7 space-y-6">
@@ -259,16 +242,16 @@ const HomePage = () => {
                 About Khajani
               </span>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary leading-[1.12]">
-                People at the heart
+                Rooted in Mathura
                 <br />
-                <span className="text-secondary font-serif italic">of a stronger tomorrow.</span>
+                <span className="text-secondary font-serif italic">Working with its people.</span>
               </h2>
               <div className="space-y-4 text-base text-muted-foreground font-light leading-relaxed">
                 <p>
                   Khajani Welfare Society is a Mathura-based organisation working with women, girls, artisans and underserved communities to create opportunities, preserve heritage and build more inclusive, sustainable livelihoods.
                 </p>
                 <p>
-                  Founded in 2007 by <strong className="font-semibold text-foreground">Dr. Harimohan Maheshwari</strong> (retired veterinary doctor), <strong className="font-semibold text-foreground">Abha Maheshwari</strong> and <strong className="font-semibold text-foreground">Shipra Rathi</strong>, Khajani grew from a simple yet powerful belief — that traditional knowledge, when nurtured with modern skills, can transform lives.
+                  Founded in 2007 by <strong className="font-semibold text-foreground">Dr. Hari Mohan Maheshwari</strong> (retired veterinary doctor), <strong className="font-semibold text-foreground">Abha Maheshwari</strong> and <strong className="font-semibold text-foreground">Shipra Rathi</strong>, Khajani grew from a simple yet powerful belief — that traditional knowledge, when nurtured with modern skills, can transform lives.
                 </p>
               </div>
 
@@ -325,42 +308,10 @@ const HomePage = () => {
               </div>
             </AnimeReveal>
 
-            {/* Milestones Horizontal Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-              {[
-                { year: "2007", title: "The Beginning", desc: "Khajani Welfare Society founded in Mathura by Dr. Harimohan Maheshwari, Abha Maheshwari and Shipra Rathi." },
-                { year: "2012", title: "Skills Take Root", desc: "Early skill training initiatives for women and artisans." },
-                { year: "2015", title: "Expanding Reach", desc: "More communities, more training programmes." },
-                { year: "2018", title: "Stronger Partnerships", desc: "Collaborations with institutions and industry partners." },
-                { year: "2020", title: "Broader Impact", desc: "Education, digital literacy and community development initiatives scaled up." },
-                { year: "2021", title: "Deeper Communities", desc: "Greater focus on inclusion, awareness and holistic development." },
-                { year: "2025", title: "Growing Forward", desc: "Continuing our journey towards stronger, self-reliant communities in Braj and beyond." },
-              ].map((mile) => (
-                <div key={mile.year} className="p-5 rounded-2xl bg-background border border-border/70 hover:border-secondary/50 transition-all flex flex-col justify-between">
-                  <div>
-                    <span className="text-2xl font-display font-bold text-primary block mb-1">
-                      {mile.year}
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-accent block mb-2">
-                      {mile.title}
-                    </span>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {mile.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center pt-4 border-t border-border/50">
-              <p className="font-handwriting text-2xl text-secondary italic">
-                Many Journeys · One Shared Tomorrow
-              </p>
-              <p className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase mt-1">
-                MATHURA · BRAJ · PEOPLE · HERITAGE · A BRIGHTER TOMORROW
-              </p>
-            </div>
-
+            {/* Milestones Timeline */}
+            <AnimeReveal variant="fade-up" delay={150}>
+              <OurJourneyTimeline />
+            </AnimeReveal>
           </div>
         </div>
       </section>
@@ -368,9 +319,9 @@ const HomePage = () => {
       {/* ══════════════════════════════════════════════════════════════════════════════════
           SCREEN 3 — OUR WORK / HOW WE WORK
          ══════════════════════════════════════════════════════════════════════════════════ */}
-      <section id="our-work" className="py-24 bg-background border-b border-border">
+      <section id="our-work" className="pt-20 pb-16 sm:pt-24 sm:pb-16 bg-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Part A: Our Work (Four Pathways) */}
           <div className="mb-20">
             {/* Header Area matching Mockup */}
@@ -667,13 +618,17 @@ const HomePage = () => {
                       “When people are given the right support, they don’t just learn new skills — they create new futures.”
                     </p>
                     <div className="pt-3">
-                      <Link
-                        to="/our-work"
-                        className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#A32A29] hover:bg-[#8B2322] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-[0_6px_20px_rgba(163,42,41,0.28)] hover:scale-105 active:scale-95"
+                      <a
+                        href="#programmes-impact"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById("programmes-impact")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#A32A29] hover:bg-[#8B2322] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-[0_6px_20px_rgba(163,42,41,0.28)] hover:scale-105 active:scale-95 cursor-pointer"
                       >
                         <span>See Our Impact</span>
                         <ArrowRight size={14} />
-                      </Link>
+                      </a>
                     </div>
                   </div>
 
@@ -690,24 +645,17 @@ const HomePage = () => {
                 </div>
               </div>
 
-              {/* Bottom Tagline */}
-              <div className="mt-8 text-center">
-                <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#718096]">
-                  Communities Create Change · MATHURA · BRAJ · PEOPLE · HERITAGE · OPPORTUNITY
-                </p>
-              </div>
             </AnimeReveal>
           </div>
-
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════════════════
           SCREEN 4 — BRAJ HERITAGE
          ══════════════════════════════════════════════════════════════════════════════════ */}
-      <section id="braj-heritage" className="py-20 sm:py-24 bg-[#FDFBF7] border-b border-border/80 relative overflow-hidden">
+      <section id="braj-heritage" className="pt-16 pb-12 sm:pt-20 sm:pb-16 bg-[#FDFBF7] border-b border-border/80 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Top Row: Left Typography & Right Perforated GI Card */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-14">
             {/* Left Column: Title, Intro & CTA */}
@@ -747,7 +695,7 @@ const HomePage = () => {
             {/* Right Column: Featured GI Craft Card (Wider) with Official GI Logo & Deckle Torn Paper Edge */}
             <AnimeReveal variant="fade-right" delay={150} className="lg:col-span-7 xl:col-span-7">
               <div className="rounded-[32px] overflow-hidden border border-[#E8DFD3] shadow-lg bg-[#FAF5EE] grid grid-cols-1 md:grid-cols-12 relative group">
-                
+
                 {/* Left: Parchment Content */}
                 <div className="md:col-span-7 p-6 sm:p-7 flex flex-col justify-between relative z-10 bg-[#FAF5EE]">
                   {/* Perforated / Torn Deckle Paper Edge (Desktop) */}
@@ -833,7 +781,7 @@ const HomePage = () => {
           </div>
 
           {/* Middle Row: 4 Heritage Pillar Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 title: "Traditional Skills",
@@ -909,50 +857,15 @@ const HomePage = () => {
               </AnimeReveal>
             ))}
           </div>
-
-          {/* Bottom Banner: Quote & Panoramic Mathura Yamuna Ghat Illustration */}
-          <AnimeReveal variant="fade-up">
-            <div className="rounded-[36px] bg-[#FAF6F0] border border-[#EAE2D5] p-8 sm:p-12 lg:p-14 relative overflow-hidden shadow-xs">
-              
-              {/* Botanical Leaf Art in Bottom Left */}
-              <img
-                src="/images/projects/botanical-leaf-branch.png"
-                alt=""
-                className="absolute -bottom-10 -left-6 w-44 sm:w-56 h-auto pointer-events-none opacity-80 object-contain select-none -rotate-45 scale-x-[-1]"
-              />
-
-              {/* Panoramic Mathura River Ghat Sketch spanning right and bottom */}
-              <img
-                src="/images/projects/mathura-ghat-panoramic.png"
-                alt="Mathura River Ghat & Temple Sketch"
-                className="absolute right-0 bottom-0 max-w-[55%] sm:max-w-[52%] lg:max-w-[50%] h-auto object-contain object-bottom pointer-events-none opacity-90 select-none hidden sm:block"
-              />
-
-              {/* Center Content */}
-              <div className="relative z-10 text-center max-w-2xl mx-auto py-2">
-                <p className="font-serif italic text-lg sm:text-2xl text-[#1A202C] leading-relaxed mb-2">
-                  “When heritage is valued, communities flourish.”
-                </p>
-                <p className="font-handwriting text-2xl sm:text-3xl text-[#C4A480] italic leading-tight mb-4">
-                  Same Roots · Stronger People · Brighter Tomorrows
-                </p>
-                <p className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] text-[#718096] uppercase">
-                  MATHURA · BRAJ · HERITAGE · OPPORTUNITY
-                </p>
-              </div>
-
-            </div>
-          </AnimeReveal>
-
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════════════════
           SCREEN 5 — OUR IMPACT
          ══════════════════════════════════════════════════════════════════════════════════ */}
-      <section id="programmes-impact" className="py-24 bg-background border-b border-border relative overflow-hidden">
+      <section id="programmes-impact" className="py-24 bg-background border-b border-border relative overflow-hidden scroll-mt-20 sm:scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Our Impact (Dark Aurora Card) */}
           <div className="rounded-3xl p-8 sm:p-14 bg-primary text-primary-foreground relative overflow-hidden shadow-2xl">
             <AuroraBackground variant="dark" intensity={1.1} />
@@ -989,11 +902,8 @@ const HomePage = () => {
                   to="/our-work"
                   className="btn-3d-accent inline-flex items-center gap-2 px-8 py-3.5 text-xs font-bold uppercase tracking-widest shadow-xl"
                 >
-                  See Our Impact <ArrowRight size={14} />
+                  Explore Our Work <ArrowRight size={14} />
                 </Link>
-                <p className="text-xs font-mono uppercase tracking-widest text-primary-foreground/50 mt-6">
-                  Many Lives · One Shared Tomorrow · MATHURA · BRAJ · PEOPLE · HERITAGE · OPPORTUNITY
-                </p>
               </div>
             </div>
           </div>
@@ -1006,22 +916,17 @@ const HomePage = () => {
          ══════════════════════════════════════════════════════════════════════════════════ */}
       <section id="stories-of-change" className="py-24 bg-card border-b border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <AnimeReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 text-accent font-bold text-xs tracking-[0.2em] uppercase px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-3">
               STORIES OF CHANGE
             </span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary">
-              Real people. Brighter futures.
+              Stories from the people we work with
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg mt-3 font-light leading-relaxed">
               Behind every programme is a person, a family and a story of courage. These are the voices of women, girls and community members whose lives are changing through skills, education and opportunity with Khajani.
             </p>
-            <div className="mt-3">
-              <span className="text-xs font-mono uppercase tracking-widest text-secondary font-bold">
-                Courage Creates Change
-              </span>
-            </div>
           </AnimeReveal>
 
           {/* 5 Real Voice Cards + Watch Stories with Picture Provision */}
@@ -1186,9 +1091,6 @@ const HomePage = () => {
             >
               Be Part of the Change <ArrowRight size={14} />
             </Link>
-            <p className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase mt-4">
-              PEOPLE · HERITAGE · OPPORTUNITY
-            </p>
           </div>
 
         </div>
@@ -1199,7 +1101,7 @@ const HomePage = () => {
          ══════════════════════════════════════════════════════════════════════════════════ */}
       <section id="gallery-media" className="py-24 bg-background border-b border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="flex flex-col md:flex-row justify-between items-end mb-14 pb-4 border-b border-border">
             <div>
               <span className="text-accent text-xs font-bold tracking-[0.2em] uppercase block mb-2">
@@ -1271,9 +1173,9 @@ const HomePage = () => {
               <AnimeReveal key={item.stream} variant="fade-up" delay={i * 70}>
                 <Link to={item.link} className="group relative rounded-3xl overflow-hidden aspect-[4/3] block bg-muted shadow-md hover:shadow-xl transition-all">
                   <img src={item.img} alt={item.stream} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/20 backdrop-blur-md text-white border border-white/30">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white text-primary shadow-sm">
                       {item.stream}
                     </span>
                   </div>
@@ -1462,7 +1364,7 @@ const HomePage = () => {
                   {/* Bottom Action Strip */}
                   <div className="pt-4 border-t border-[#F1F5F9] flex flex-col sm:flex-row items-center gap-4">
                     <Link
-                      to="/partnership-inquiry"
+                      to="/get-involved"
                       className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] hover:from-[#C62828] hover:to-[#A71818] text-white font-bold text-xs uppercase tracking-wider shadow-[0_6px_20px_rgba(211,47,47,0.32)] transition-all hover:scale-105 active:scale-95 shrink-0"
                     >
                       <span>PARTNER WITH US</span>
@@ -1502,7 +1404,7 @@ const HomePage = () => {
                     </p>
 
                     <Link
-                      to="/media"
+                      to="/media#recognition"
                       className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#FAF5EE] border border-[#E5D7C3] hover:bg-[#F3ECE0] text-[#142033] font-bold text-[11px] uppercase tracking-wider transition-all duration-300 shadow-2xs hover:shadow-xs group w-fit"
                     >
                       <span>SEE ALL RECOGNITION</span>
@@ -1522,16 +1424,7 @@ const HomePage = () => {
               </AnimeReveal>
             </div>
 
-            {/* Bottom Slogan Bar */}
-            <div className="pt-10 mt-12 border-t border-[#EAE2D5] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="font-handwriting text-2xl sm:text-3xl text-[#C48332] italic tracking-wide">
-                Real People, Real Impact, A Brighter Tomorrow.
-              </span>
-              <span className="hidden lg:block flex-1 h-px bg-[#EAE2D5] mx-6" />
-              <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] text-[#7A7165] uppercase font-bold">
-                MATHURA · BRAJ · PEOPLE · HERITAGE · OPPORTUNITY
-              </span>
-            </div>
+
           </div>
 
         </div>
@@ -1543,10 +1436,10 @@ const HomePage = () => {
       {/* Get Involved */}
       <section id="get-involved" className="py-20 lg:py-24 bg-[#FAF7F2] border-b border-[#EAE2D5] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
+
           {/* Top Section: 3-Column Editorial Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center relative">
-            
+
             {/* Left: Typography & Mission Statement (5 cols) */}
             <AnimeReveal variant="fade-up" className="lg:col-span-5">
               <div className="flex items-center gap-3 mb-4">
@@ -1590,7 +1483,7 @@ const HomePage = () => {
 
             {/* Right: Pinned Parchment Note Card with Quote & Botanical Art (3 cols) */}
             <AnimeReveal variant="fade-up" delay={200} className="lg:col-span-3 relative">
-              
+
               {/* Botanical Lotus Line Art at Top Right */}
               <svg
                 className="absolute -top-12 -right-4 w-40 sm:w-48 h-auto text-[#C4A480]/50 pointer-events-none select-none z-0 hidden sm:block"
@@ -1652,7 +1545,7 @@ const HomePage = () => {
 
           {/* 4 Action Pathway Columns */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 mt-16 pt-12 border-t border-[#E8E1D5]">
-            
+
             {/* 1. Donate */}
             <AnimeReveal variant="fade-up" delay={0}>
               <div className="flex flex-col justify-between h-full pr-0 lg:pr-8 border-b sm:border-b-0 lg:border-r border-[#E8E1D5] pb-8 lg:pb-0">
@@ -1771,23 +1664,7 @@ const HomePage = () => {
 
           </div>
 
-          {/* Bottom Footer Bar: People · Heritage · Opportunity & Emblem */}
-          <div className="mt-16 pt-8 border-t border-[#E8E1D5] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="font-handwriting text-2xl sm:text-3xl text-[#BA9773] italic select-none">
-              People · Heritage · Opportunity
-            </span>
-            <div className="hidden sm:block flex-1 h-[1px] bg-[#E2D8C7] mx-6" />
-            <div className="flex items-center gap-3">
-              {/* Floral Rosette Emblem */}
-              <svg className="w-5 h-5 text-[#BA9773] select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <circle cx="12" cy="12" r="2.5" />
-                <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-              </svg>
-              <span className="text-[10px] sm:text-[11px] font-sans tracking-[0.25em] text-[#7A7165] uppercase font-semibold">
-                KHAJANI <span className="mx-2 text-[#C4B7A5]">―</span> MATHURA · BRAJ
-              </span>
-            </div>
-          </div>
+
 
         </div>
       </section>
@@ -1795,7 +1672,7 @@ const HomePage = () => {
       {/* Stay Connected */}
       <section id="stay-connected" className="bg-primary text-primary-foreground py-24 relative overflow-hidden border-t border-white/10">
         <AuroraBackground variant="dark" intensity={1.1} />
-        
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimeReveal variant="fade-up">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 glass-dark rounded-full text-xs font-bold tracking-widest uppercase mb-4 text-secondary border border-white/10 shadow-sm">

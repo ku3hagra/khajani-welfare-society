@@ -97,6 +97,7 @@ const App = () => (
           <Route path="/campaigns" element={<CampaignsPage />} />
           <Route path="/collaborations" element={<Navigate to="/get-involved" replace />} />
           <Route path="/partner" element={<Navigate to="/get-involved" replace />} />
+          <Route path="/partnership-inquiry" element={<Navigate to="/get-involved" replace />} />
           <Route path="/donate" element={<DonatePage />} />
           <Route path="/get-involved" element={<GetInvolvedPage />} />
           <Route path="/volunteer" element={<GetInvolvedPage />} />

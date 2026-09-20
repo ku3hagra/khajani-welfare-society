@@ -521,7 +521,7 @@ const MediaPage = () => {
           RECOGNITION
           Moments of recognition.
          ══════════════════════════════════════════════════════════════════════════════════ */}
-      <section id="recognition" className="py-20 lg:py-24 bg-[#FAF7F2] border-b border-[#EAE2D5]">
+      <section id="recognition" className="py-20 lg:py-24 bg-[#FAF7F2] border-b border-[#EAE2D5] scroll-mt-20 sm:scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <AnimeReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-16">
