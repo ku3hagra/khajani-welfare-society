@@ -282,19 +282,31 @@ const CampaignsPage = () => {
       <section className="bg-primary relative overflow-hidden py-24 lg:py-32">
         <AuroraBackground variant="dark" intensity={0.9} />
         <AnimeReveal variant="fade-up" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-5xl md:text-7xl font-display font-bold text-primary-foreground mb-6">
-            The Future is a <br /><span className="text-secondary italic">Collective Canvas.</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 glass-dark rounded-full text-xs font-bold tracking-widest uppercase mb-6 text-secondary border border-white/10 shadow-sm">
+            Together We Create Opportunities
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-primary-foreground mb-6 leading-tight">
+            Be part of <br />
+            <span className="font-handwriting text-5xl sm:text-6xl md:text-7xl text-secondary font-normal italic tracking-normal -rotate-2 inline-block px-1">
+              a brighter
+            </span>{" "}
+            tomorrow.
           </h2>
-          <p className="mt-6 text-xl text-primary-foreground/60 font-serif italic max-w-2xl mx-auto">
-            Your support fuels the initiatives that change lives. Be a part of the Khajani legacy today.
+          <p className="text-lg sm:text-xl text-primary-foreground/80 font-light max-w-2xl mx-auto leading-relaxed">
+            Communities grow stronger when people come together. There are many ways you can support Khajani’s work and help create lasting change in Mathura and Braj.
           </p>
-          <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link to="/donate" className="btn-3d-accent inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest">
-              Get Involved
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/donate" className="btn-3d-accent inline-flex items-center justify-center px-10 py-4 text-xs font-bold uppercase tracking-widest shadow-xl">
+              Donate Now <ArrowRight size={14} className="ml-1" />
             </Link>
-            <Link to="/media" className="text-primary-foreground/80 border-b border-primary-foreground/30 hover:border-secondary hover:text-secondary pb-1 font-display text-lg italic transition-colors flex items-center gap-2">
-              Read our impact stories <ArrowRight size={16} />
+            <Link to="/volunteer" className="btn-3d-outline inline-flex items-center justify-center px-9 py-4 text-xs font-bold uppercase tracking-widest">
+              Join Us as Volunteer
             </Link>
+          </div>
+          <div className="mt-12 pt-6 border-t border-white/10">
+            <p className="text-[11px] font-mono tracking-widest text-primary-foreground/50 uppercase">
+              PEOPLE · HERITAGE · OPPORTUNITY · A BRIGHTER TOMORROW
+            </p>
           </div>
         </AnimeReveal>
       </section>

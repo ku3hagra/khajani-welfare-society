@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Lato:wght@300;400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -42,7 +42,7 @@
     --navy: 221 63% 17%;
     --gold: 42 62% 60%;
     --red-accent: 5 78% 49%;
-    --footer-bg: 220 50% 8%;
+    --footer-bg: 221 63% 17%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -90,23 +90,27 @@
     @apply border-border;
   }
 
+  html,
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
   }
 
-  /* Premium scrollbar */
+  /* Hide scrollbar site-wide in any form */
+  *,
+  *::before,
+  *::after {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  *::-webkit-scrollbar,
   ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--cream-dark));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(var(--navy)), hsl(var(--accent)));
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--accent));
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
   }
 }
 
@@ -114,6 +118,9 @@
   /* ─── Typography ─── */
   .font-display {
     font-family: 'Playfair Display', serif;
+  }
+  .font-handwriting {
+    font-family: 'Caveat', cursive, sans-serif;
   }
 
   .drop-cap::first-letter {
@@ -302,6 +309,7 @@
       0 4px 8px rgba(0, 0, 0, 0.06);
   }
 
+
   /* ─── Misc ─── */
   .hero-mask {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -377,6 +385,44 @@
   }
   .animate-float-bounce {
     animation: floatBounce 3.6s ease-in-out infinite;
+  }
+
+  /* ─── Floating slow animation with rotation ─── */
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(2.5deg);
+    }
+  }
+  .animate-float-slow {
+    animation: floatSlow 5s ease-in-out infinite;
+  }
+
+  @keyframes floatReverse {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(10px) rotate(-2deg);
+    }
+  }
+  .animate-float-reverse {
+    animation: floatReverse 6.5s ease-in-out infinite;
+  }
+
+  /* ─── Golden pulse glow ─── */
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.25), 0 0 30px rgba(163, 42, 41, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), 0 0 45px rgba(163, 42, 41, 0.3);
+    }
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
   }
 
   /* ─── Anime.js targets ─── */

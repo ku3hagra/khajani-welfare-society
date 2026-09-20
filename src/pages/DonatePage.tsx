@@ -1,170 +1,579 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { AnimeReveal } from "@/components/AnimeReveal";
 import AuroraBackground from "@/components/AuroraBackground";
-import { ShieldCheck, Shield, Copy, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  ShieldCheck,
+  Shield,
+  Copy,
+  CheckCircle2,
+  ArrowDown,
+  ArrowRight,
+  Building2,
+  Mail,
+  FileCheck,
+  QrCode,
+  HeartHandshake,
+  Scale,
+  Sparkles
+} from "lucide-react";
 
 const DonatePage = () => {
-  const [copied, setCopied] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("q353936413@ybl");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = (text: string, fieldName: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldName);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative bg-background overflow-hidden pt-12 lg:pt-24 pb-16">
-        <AuroraBackground variant="light" intensity={0.7} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
-            {/* Left */}
-            <AnimeReveal variant="fade-left" className="w-full lg:w-1/2">
-              <span className="inline-flex items-center gap-2 glass border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-6 px-4 py-1.5 rounded-full">
-                <Sparkles size={10} /> Official Donation Portal
-              </span>
-              <h1 className="text-5xl lg:text-7xl tracking-tighter font-display font-bold text-primary leading-none">
-                <span className="block font-medium">Scan to</span>
-                <span className="block text-accent not-italic font-black mt-2">Empower Lives</span>
-              </h1>
-              <div className="mt-8 border-l-4 border-accent pl-6 py-2">
-                <p className="text-lg lg:text-xl text-muted-foreground font-light italic leading-relaxed">
-                  "Your contribution directly funds skill development and healthcare initiatives in the Brij region. 100% transparency assured."
-                </p>
-              </div>
-
-              {/* Impact tiers */}
-              <div className="mt-12 space-y-4">
-                <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-muted-foreground">Your Impact Today</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
-                  {[
-                    { amount: "₹200", desc: "Hygiene Kit" },
-                    { amount: "₹500", desc: "Stationery Kit" },
-                    { amount: "₹750", desc: "Dry Ration Kit" },
-                    { amount: "₹1,000", desc: "School Uniforms" },
-                    { amount: "₹6,100", desc: "Educational Support" },
-                  ].map((item, i) => (
-                    <AnimeReveal key={item.amount} variant="fade-up" delay={i * 60}>
-                      <div
-                        className="bg-white rounded-[26px] p-5 sm:p-6 text-left flex flex-col justify-between min-h-[120px] transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group"
-                        style={{
-                          boxShadow: "0 14px 28px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 -4px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9)",
-                        }}
-                      >
-                        <div className="text-2xl sm:text-[26px] font-bold text-[#0c2340] tracking-tight group-hover:text-accent transition-colors">
-                          {item.amount}
-                        </div>
-                        <p className="text-[13px] sm:text-sm text-slate-500 font-serif italic leading-snug mt-2">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </AnimeReveal>
-                  ))}
-                </div>
-              </div>
-
-              {/* Trust badges */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-2 glass px-4 py-2 rounded-full border border-green-400/20">
-                  <ShieldCheck className="text-green-500" size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">80G Certificate</span>
-                </div>
-                <div className="flex items-center gap-2 glass px-4 py-2 rounded-full border border-blue-400/20">
-                  <Shield className="text-blue-500" size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">12A Registered</span>
-                </div>
-              </div>
-            </AnimeReveal>
-
-            {/* Right — QR card */}
-            <AnimeReveal variant="fade-right" delay={200} className="w-full lg:w-1/2 flex flex-col items-center">
-              <div className="clay-card p-8 max-w-sm w-full relative">
-                <div className="aspect-square bg-muted rounded-2xl border border-border flex items-center justify-center mb-6 overflow-hidden">
-                  <img
-                    src="/images/donate/upi-qr.jpg"
-                    alt="Khajani Welfare Society UPI QR Code"
-                    className="w-full h-full object-contain p-2"
-                  />
-                </div>
-                <div className="text-center space-y-3">
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">UPI ID</p>
-                  <button
-                    onClick={handleCopy}
-                    className="flex items-center justify-center gap-2 glass px-4 py-2.5 rounded-xl w-full border border-border hover:border-accent/30 transition-all group"
-                  >
-                    <code className="text-sm font-mono font-bold text-primary">q353936413@ybl</code>
-                    {copied
-                      ? <CheckCircle2 className="text-green-500 shrink-0" size={14} />
-                      : <Copy className="text-muted-foreground group-hover:text-accent shrink-0 transition-colors" size={14} />
-                    }
-                  </button>
-                  <p className="text-xs text-muted-foreground italic">Accepts GPay, PhonePe, Paytm, BHIM</p>
-                </div>
-              </div>
-              <div className="mt-6 text-center max-w-sm">
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Donations are exempt from tax under section 80G of the Income Tax Act. Please share your transaction details at{" "}
-                  <a className="text-accent underline" href="mailto:info@khajaniwelfaresociety.com">info@khajaniwelfaresociety.com</a>{" "}
-                  for the receipt.
-                </p>
-              </div>
-            </AnimeReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Bank Details */}
-      <section className="py-16 lg:py-24 bg-card border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          SCENE 1 — DONATE · SUPPORT KHAJANI
+          Support work that continues on the ground.
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section id="donate-hero" className="relative bg-[#FAF7F2] overflow-hidden pt-16 lg:pt-24 pb-20 border-b border-[#EAE2D5]">
+        <AuroraBackground variant="light" intensity={0.6} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <AnimeReveal variant="fade-up">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-display font-bold text-primary italic">Bank Transfer Details</h2>
-              <p className="mt-4 text-muted-foreground text-sm font-serif italic">For direct NEFT/RTGS transfers</p>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EFE7DC] border border-[#DFCFC0] text-[#A6623B] text-xs font-bold tracking-[0.22em] uppercase mb-6 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A6623B]" />
+              DONATE · SUPPORT KHAJANI
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#142033] tracking-tight leading-[1.12] mb-6 max-w-4xl mx-auto">
+              Support work that continues on the ground.
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#55606E] font-sans font-light leading-relaxed max-w-2xl mx-auto mb-10">
+              At Khajani Welfare Society, our work is rooted in Mathura and the Braj region.
+              Your contributions directly sustain ongoing programmes in women’s vocational skills,
+              girl-child education, traditional artisanal craft preservation, and essential community welfare initiatives.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => scrollToSection("upi-contribution")}
+                className="btn-3d-accent inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl shadow-md cursor-pointer"
+              >
+                Donate via UPI <ArrowDown size={14} className="animate-bounce" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection("bank-transfer")}
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl bg-white border border-[#D8C7B0] text-[#142033] hover:bg-[#F5EFE6] transition-colors shadow-xs cursor-pointer"
+              >
+                Bank Transfer Details <ArrowDown size={14} />
+              </button>
             </div>
           </AnimeReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { label: "Account Name", value: "Khajani Welfare Society", mono: false },
-              { label: "Bank", value: "Yes Bank, Dampier Nagar, Mathura", mono: false },
-              { label: "Account Number", value: "007294600000533", mono: true },
-              { label: "IFSC Code", value: "YESB0000072", mono: true },
-            ].map((item, i) => (
-              <AnimeReveal key={item.label} variant="fade-up" delay={i * 100}>
-                <div className="clay-card p-6 text-center h-full flex flex-col justify-center">
-                  <h3 className="text-xs font-bold tracking-widest uppercase text-muted-foreground mb-2">{item.label}</h3>
-                  <p className={`text-base font-bold text-primary ${item.mono ? "font-mono" : "font-display"}`}>{item.value}</p>
-                </div>
-              </AnimeReveal>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Transparency */}
-      <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
-        <AuroraBackground variant="dark" intensity={0.6} />
-        <AnimeReveal variant="fade-up" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-primary-foreground leading-tight mb-8">
-            Transparency is our <span className="text-secondary italic">Core Value</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { num: "92%", label: "Program Spending", sub: "Directly reaches beneficiaries" },
-              { num: "100%", label: "Tax Exempt", sub: "For Indian Citizens (80G)" },
-              { num: "18+", label: "Years of Service", sub: "Consistent community impact" },
-            ].map((s, i) => (
-              <AnimeReveal key={s.label} variant="fade-up" delay={i * 100}>
-                <div className="glass-dark rounded-2xl p-8 border border-white/10">
-                  <div className="text-5xl font-bold text-secondary mb-2 font-display">{s.num}</div>
-                  <p className="text-sm font-bold uppercase tracking-widest opacity-80">{s.label}</p>
-                  <p className="text-xs opacity-60 mt-2">{s.sub}</p>
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          SCENE 2 — MAKE A CONTRIBUTION
+          Choose a convenient way to give.
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section id="upi-contribution" className="py-20 lg:py-24 bg-white border-b border-[#EAE2D5] relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <AnimeReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-16">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#A6623B]">
+                MAKE A CONTRIBUTION
+              </span>
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#142033] tracking-tight">
+              Choose a convenient way to give.
+            </h2>
+            <p className="text-sm sm:text-base text-[#55606E] font-light mt-4 leading-relaxed">
+              Instant and secure payment through any standard UPI application. Direct, fee-free transfer to Khajani Welfare Society.
+            </p>
+          </AnimeReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-4xl mx-auto">
+            
+            {/* Visual Centerpiece: Pinned QR Code Card (7 cols) */}
+            <AnimeReveal variant="fade-left" className="lg:col-span-7 flex justify-center">
+              <div className="bg-[#FAF7F2] p-8 sm:p-10 rounded-3xl border border-[#EAE2D5] shadow-[0_16px_36px_rgba(20,32,51,0.07)] text-center relative max-w-md w-full">
+                
+                {/* Verified Header */}
+                <div className="flex items-center justify-between pb-5 mb-6 border-b border-[#EAE2D5]">
+                  <div className="flex items-center gap-2 text-left">
+                    <div className="w-8 h-8 rounded-full bg-[#A6623B]/10 flex items-center justify-center text-[#A6623B]">
+                      <QrCode size={18} />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-[#142033]">
+                        Khajani Welfare Society
+                      </h4>
+                      <p className="text-[11px] text-[#7A7165]">Official Verified UPI QR</p>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                    <CheckCircle2 size={12} /> Verified
+                  </span>
                 </div>
-              </AnimeReveal>
-            ))}
+
+                {/* QR Image */}
+                <div className="w-64 h-64 mx-auto bg-white p-4 rounded-2xl border-2 border-dashed border-[#D8C7B0] shadow-inner mb-6 flex items-center justify-center">
+                  <img
+                    src="/images/donate/upi-qr.jpg"
+                    alt="Khajani Welfare Society Official UPI QR Code"
+                    className="w-full h-full object-contain select-none"
+                  />
+                </div>
+
+                <p className="text-xs text-[#55606E] font-medium mb-1">
+                  Scan using Google Pay, PhonePe, Paytm, BHIM or mobile banking app
+                </p>
+              </div>
+            </AnimeReveal>
+
+            {/* Beside/Below: UPI ID Display & Copy Controls (5 cols) */}
+            <AnimeReveal variant="fade-right" delay={150} className="lg:col-span-5 flex flex-col justify-center space-y-6">
+              
+              <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EAE2D5]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#7A7165] block mb-2">
+                  Direct UPI ID
+                </span>
+                
+                <div className="flex items-center justify-between gap-3 p-3.5 bg-white rounded-xl border border-[#D8C7B0] shadow-xs">
+                  <code className="text-base sm:text-lg font-mono font-bold text-[#142033] tracking-wide select-all">
+                    q353936413@ybl
+                  </code>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("q353936413@ybl", "upi")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#A6623B] border border-[#DFCFC0] transition-colors cursor-pointer shrink-0"
+                    title="Copy UPI ID"
+                  >
+                    {copiedField === "upi" ? (
+                      <>
+                        <CheckCircle2 size={13} className="text-emerald-600" />
+                        <span className="text-emerald-700">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <p className="text-xs text-[#7A7165] mt-2.5 italic">
+                  Supported by all NPCI-compliant payment applications.
+                </p>
+              </div>
+
+              {/* Receipt & UTR Instructions */}
+              <div className="p-6 rounded-2xl bg-[#F4EFE6]/70 border border-[#E8E1D4]">
+                <div className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-full bg-[#B86E45]/15 flex items-center justify-center text-[#B86E45] shrink-0 mt-0.5">
+                    <FileCheck size={15} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#142033] mb-1">
+                      Tax Exemption Receipt
+                    </h4>
+                    <p className="text-xs text-[#55606E] leading-relaxed">
+                      To receive your official 80G tax receipt, please email your transaction reference (UTR / screenshot), full name, and PAN number to{" "}
+                      <a
+                        href="mailto:info@khajaniwelfaresociety.com"
+                        className="text-[#A9442A] font-semibold underline hover:text-[#88351F]"
+                      >
+                        info@khajaniwelfaresociety.com
+                      </a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </AnimeReveal>
+
           </div>
-        </AnimeReveal>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          SCENE 3 — BANK TRANSFER
+          Prefer a direct bank transfer?
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section id="bank-transfer" className="py-20 lg:py-24 bg-[#FAF7F2] border-b border-[#EAE2D5]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <AnimeReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-14">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#A6623B]">
+                BANK TRANSFER
+              </span>
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#142033] tracking-tight">
+              Prefer a direct bank transfer?
+            </h2>
+            <p className="text-sm sm:text-base text-[#55606E] font-light mt-4 leading-relaxed">
+              For direct NEFT, RTGS, or IMPS transactions. All details correspond to the verified institutional banking account of Khajani Welfare Society.
+            </p>
+          </AnimeReveal>
+
+          {/* Institutional Panel */}
+          <AnimeReveal variant="fade-up" delay={100}>
+            <div className="bg-white rounded-3xl border border-[#EAE2D5] shadow-[0_12px_28px_rgba(20,32,51,0.06)] overflow-hidden">
+              
+              <div className="px-6 py-5 bg-[#F5EFE6] border-b border-[#EAE2D5] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <Building2 size={17} className="text-[#A6623B]" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#142033]">
+                    Verified Institutional Banking Record
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono tracking-wider text-[#7A7165] uppercase">
+                  Current Account · Yes Bank
+                </span>
+              </div>
+
+              <div className="divide-y divide-[#EAE2D5]">
+                
+                {/* 1. Account Name */}
+                <div className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF7F2]/50 transition-colors">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#7A7165] block mb-1">
+                      Account Name
+                    </span>
+                    <p className="text-base sm:text-lg font-display font-bold text-[#142033]">
+                      Khajani Welfare Society
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("Khajani Welfare Society", "name")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#FAF7F2] hover:bg-[#EFE7DC] text-[#7A7165] border border-[#DFCFC0] transition-colors cursor-pointer self-start sm:self-center"
+                  >
+                    {copiedField === "name" ? (
+                      <>
+                        <CheckCircle2 size={13} className="text-emerald-600" />
+                        <span className="text-emerald-700">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* 2. Bank & Branch */}
+                <div className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF7F2]/50 transition-colors">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#7A7165] block mb-1">
+                      Bank &amp; Branch
+                    </span>
+                    <p className="text-base sm:text-lg font-display font-bold text-[#142033]">
+                      Yes Bank, Dampier Nagar, Mathura
+                    </p>
+                    <p className="text-xs text-[#7A7165] mt-0.5">Mathura, Uttar Pradesh, India</p>
+                  </div>
+                  <span className="text-xs font-medium text-[#7A7165] bg-[#FAF7F2] px-3 py-1 rounded-md border border-[#EAE2D5] self-start sm:self-center">
+                    Branch Code: 000072
+                  </span>
+                </div>
+
+                {/* 3. Account Number */}
+                <div className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF7F2]/50 transition-colors">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#7A7165] block mb-1">
+                      Account Number
+                    </span>
+                    <p className="text-lg sm:text-xl font-mono font-bold text-[#142033] tracking-wider select-all">
+                      007294600000533
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("007294600000533", "account")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#FAF7F2] hover:bg-[#EFE7DC] text-[#7A7165] border border-[#DFCFC0] transition-colors cursor-pointer self-start sm:self-center"
+                  >
+                    {copiedField === "account" ? (
+                      <>
+                        <CheckCircle2 size={13} className="text-emerald-600" />
+                        <span className="text-emerald-700">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* 4. IFSC Code */}
+                <div className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF7F2]/50 transition-colors">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#7A7165] block mb-1">
+                      IFSC Code (RTGS / NEFT / IMPS)
+                    </span>
+                    <p className="text-lg sm:text-xl font-mono font-bold text-[#142033] tracking-wider select-all">
+                      YESB0000072
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleCopy("YESB0000072", "ifsc")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#FAF7F2] hover:bg-[#EFE7DC] text-[#7A7165] border border-[#DFCFC0] transition-colors cursor-pointer self-start sm:self-center"
+                  >
+                    {copiedField === "ifsc" ? (
+                      <>
+                        <CheckCircle2 size={13} className="text-emerald-600" />
+                        <span className="text-emerald-700">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+              </div>
+
+              {/* Advisory note */}
+              <div className="p-5 bg-[#FAF7F2] border-t border-[#EAE2D5] text-center">
+                <p className="text-xs text-[#7A7165] italic">
+                  Institutional supporters may confirm these bank details directly against the organisation’s current banking records before initiating major transfers.
+                </p>
+              </div>
+
+            </div>
+          </AnimeReveal>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          SCENE 4 — YOUR CONTRIBUTION, RESPONSIBLY RECEIVED
+          Verifiable credentials such as 80G / 12A or 12AB, receipts, accountability.
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section id="accountability" className="py-20 lg:py-24 bg-white border-b border-[#EAE2D5]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <AnimeReveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-16">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#A6623B]">
+                ACCOUNTABILITY &amp; CREDENTIALS
+              </span>
+              <span className="w-8 h-[1px] bg-[#D8C7B0]" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#142033] tracking-tight">
+              Your contribution, responsibly received.
+            </h2>
+            <p className="text-sm sm:text-base text-[#55606E] font-light mt-4 leading-relaxed">
+              Khajani Welfare Society operates under formal non-profit registration and regulatory compliance in India.
+              We adhere to strict standards of institutional transparency and fiscal stewardship.
+            </p>
+          </AnimeReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* 1. 80G Tax Exemption */}
+            <AnimeReveal variant="fade-up" delay={0}>
+              <div className="p-7 rounded-2xl bg-[#FAF7F2] border border-[#EAE2D5] h-full flex flex-col justify-between hover:border-[#D8C7B0] transition-colors">
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100/70 text-emerald-800 flex items-center justify-center mb-5">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-[#142033] mb-2">
+                    80G Tax Exemption
+                  </h3>
+                  <p className="text-xs text-[#55606E] leading-relaxed">
+                    Donations are eligible for tax deduction benefits under Section 80G of the Income Tax Act for Indian citizens and resident entities.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#EAE2D5]">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-800 uppercase">
+                    INCOME TAX ACT · 80G
+                  </span>
+                </div>
+              </div>
+            </AnimeReveal>
+
+            {/* 2. 12A / 12AB Registration */}
+            <AnimeReveal variant="fade-up" delay={100}>
+              <div className="p-7 rounded-2xl bg-[#FAF7F2] border border-[#EAE2D5] h-full flex flex-col justify-between hover:border-[#D8C7B0] transition-colors">
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-blue-100/70 text-blue-800 flex items-center justify-center mb-5">
+                    <Shield size={20} />
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-[#142033] mb-2">
+                    12A / 12AB Registration
+                  </h3>
+                  <p className="text-xs text-[#55606E] leading-relaxed">
+                    Formally registered and recognized as an institutional charitable non-profit trust with perpetual charitable status in India.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#EAE2D5]">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-blue-800 uppercase">
+                    CHARITABLE STATUS · 12A/12AB
+                  </span>
+                </div>
+              </div>
+            </AnimeReveal>
+
+            {/* 3. Official Receipts */}
+            <AnimeReveal variant="fade-up" delay={200}>
+              <div className="p-7 rounded-2xl bg-[#FAF7F2] border border-[#EAE2D5] h-full flex flex-col justify-between hover:border-[#D8C7B0] transition-colors">
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-amber-100/70 text-amber-800 flex items-center justify-center mb-5">
+                    <FileCheck size={20} />
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-[#142033] mb-2">
+                    Verified Receipts
+                  </h3>
+                  <p className="text-xs text-[#55606E] leading-relaxed">
+                    Digitally verifiable, signed donation receipts containing your PAN and transaction UTR are issued against every confirmed contribution.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#EAE2D5]">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-amber-800 uppercase">
+                    DIGITAL RECEIPT ISSUED
+                  </span>
+                </div>
+              </div>
+            </AnimeReveal>
+
+            {/* 4. Audited Accounts */}
+            <AnimeReveal variant="fade-up" delay={300}>
+              <div className="p-7 rounded-2xl bg-[#FAF7F2] border border-[#EAE2D5] h-full flex flex-col justify-between hover:border-[#D8C7B0] transition-colors">
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-purple-100/70 text-purple-800 flex items-center justify-center mb-5">
+                    <Scale size={20} />
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-[#142033] mb-2">
+                    Audited Accounts
+                  </h3>
+                  <p className="text-xs text-[#55606E] leading-relaxed">
+                    Annual financial statements and programme accounts are audited by independent chartered accountants in full statutory compliance.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#EAE2D5]">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-purple-800 uppercase">
+                    ANNUAL STATUTORY AUDIT
+                  </span>
+                </div>
+              </div>
+            </AnimeReveal>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          SCENE 5 — NEED ASSISTANCE?
+          For institutional or larger contributions.
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section id="assistance" className="py-20 bg-[#FAF7F2] border-b border-[#EAE2D5]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimeReveal variant="fade-up">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#EAE2D5] shadow-[0_12px_28px_rgba(20,32,51,0.06)] flex flex-col sm:flex-row items-center justify-between gap-8">
+              
+              <div className="max-w-xl text-center sm:text-left">
+                <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#A6623B] block mb-2">
+                  NEED ASSISTANCE?
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#142033] mb-3">
+                  For institutional or larger contributions.
+                </h3>
+                <p className="text-sm text-[#55606E] leading-relaxed">
+                  Looking to support through corporate social responsibility (CSR) grants, institutional MoUs, programmatic sponsorship, or tailored partnership agreements?
+                  We welcome direct dialogue with our leadership team.
+                </p>
+              </div>
+
+              <div className="shrink-0 flex flex-col items-center sm:items-end gap-3">
+                <Link
+                  to="/contact"
+                  className="btn-3d-accent inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl shadow-md whitespace-nowrap"
+                >
+                  Contact Khajani <ArrowRight size={14} />
+                </Link>
+                <a
+                  href="mailto:info@khajaniwelfaresociety.com"
+                  className="text-xs text-[#7A7165] hover:text-[#A6623B] flex items-center gap-1.5 transition-colors"
+                >
+                  <Mail size={13} /> info@khajaniwelfaresociety.com
+                </a>
+              </div>
+
+            </div>
+          </AnimeReveal>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════════════════
+          RESTRAINED CLOSING
+          Every contribution becomes part of the work.
+         ══════════════════════════════════════════════════════════════════════════════════ */}
+      <section className="py-20 lg:py-24 bg-[#142033] text-white relative overflow-hidden text-center">
+        <AuroraBackground variant="dark" intensity={0.7} />
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <AnimeReveal variant="fade-up">
+            
+            <p className="font-handwriting text-3xl sm:text-4xl text-[#D8C7B0] italic mb-4">
+              Real Impact · Real Roots
+            </p>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight mb-6 leading-tight">
+              Every contribution becomes part of the work.
+            </h2>
+
+            <p className="text-sm sm:text-base text-white/70 max-w-xl mx-auto font-light leading-relaxed mb-10">
+              Together, we build skilled hands, resilient households, and dignified futures across Mathura and Braj.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => scrollToSection("upi-contribution")}
+                className="btn-3d-accent inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg cursor-pointer"
+              >
+                Donate via UPI <ArrowRight size={14} />
+              </button>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-xs font-bold uppercase tracking-wider rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors backdrop-blur-md shadow-sm"
+              >
+                Explore Our Work <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <div className="mt-14 pt-8 border-t border-white/10">
+              <p className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] text-white/50 uppercase">
+                PEOPLE · HERITAGE · OPPORTUNITY · KHAJANI WELFARE SOCIETY
+              </p>
+            </div>
+
+          </AnimeReveal>
+        </div>
       </section>
     </Layout>
   );
